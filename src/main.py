@@ -42,9 +42,18 @@ def get_movies_from_cinema(watchingDate, cinema):
 
     return response.text
 
+def parse_movies_data(movies_data):
+    """Parse all the movies from the given html
+
+        Parameters
+        ----------
+        movies_data : str,
+            The html data containing the movies
+        """
+    soup = BeautifulSoup(movies_data, "html.parser")
+    movies_list = soup.find_all('article')
 
 
 if __name__ == "__main__":
     response = get_movies_from_cinema('2019-10-11', cinema_id_list['ASTORIA'])
-    soup = BeautifulSoup(response, "html.parser")
-    print(soup.article.a['title'])
+    parse_movies_data(response)
