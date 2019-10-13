@@ -1,0 +1,7 @@
+// {type:class}
+// {direction:topDown}
+// {generate:true}
+
+[Cinema|id;name;address]
+[Session|cinema;time_slot|get_cinema(); get_time_slot()]<>1-cinema 1>[Cinema]
+[Movie|title;description;duration;poster;sessions|get_title();get_description();get_duration(); get_poster();get_sessions()]<>1-session 1..*>[Session]
